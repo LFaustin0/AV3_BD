@@ -1,0 +1,22 @@
+CREATE TABLE pacientes (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    idade INT NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    sexo VARCHAR(15)
+);
+
+CREATE TABLE medicos(
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especialidade varchar(200) NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    crm varchar(200) unique not null,
+    sexo VARCHAR(15)
+);
+create table consultas(
+id serial primary key,
+medicos_id int references medicos(id),
+pacientes_id int references pacientes(id),
+data_consulta date  not null 
+);
